@@ -1,0 +1,73 @@
+<androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/my_toolbar"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/iv_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintLeft_toRightOf="@id/tv_balance"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@android:drawable/ic_menu_manage"/>
+
+        <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:layout_constraintLeft_toRightOf="@id/iv_balance"
+                android:textSize="25dp"
+                android:text="12,000,000" tools:ignore="MissingConstraints"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<EditText-->
+    <!--android:id="@+id/editText_search"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:ems="10"-->
+    <!--android:inputType="textPersonName"-->
+    <!--android:hint="검색어 입력하세요."-->
+    <!--android:visibility="gone"-->
+    <!--tools:layout_editor_absoluteX="37dp"-->
+    <!--tools:layout_editor_absoluteY="0dp"/>-->
+
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@android:color/white"-->
+    <!--android:minHeight="?attr/actionBarSize"-->
+    <!--app:contentInsetLeft="0dp"-->
+    <!--app:contentInsetStart="0dp" app:contentInsetRight="0dp"-->
+    <!--app:contentInsetEnd="0dp">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/toolbar_title"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:gravity="center"-->
+    <!--android:text="TEST"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:textSize="25dp"-->
+    <!--android:textStyle="bold"/>-->
+
+</androidx.appcompat.widget.Toolbar>

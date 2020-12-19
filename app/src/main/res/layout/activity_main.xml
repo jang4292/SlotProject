@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Hello World!"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"/>-->
+    <!--<androidx.fragment.app.FragmentContainerView-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/my_toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="?attr/colorPrimary"-->
+    <!--android:elevation="4dp"-->
+    <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
+
+    <!--<include-->
+    <!--android:id="@+id/custom_actionbar"-->
+    <!--layout="@layout/custom_actionbar"    />-->
+
+    <include
+            layout="@layout/custom_actionbar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_left"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:ignore="MissingConstraints">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:ignore="MissingConstraints">
+
+            <Button
+                    android:id="@+id/btn_spin"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="SPIN"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/holo_red_dark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<fragment-->
+    <!--android:id="@+id/nav_host_fragment"-->
+    <!--android:name="androidx.navigation.fragment.NavHostFragment"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+
+    <!--app:defaultNavHost="true"-->
+    <!--app:navGraph="@navigation/nav_graph"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titlebar_height">75dp</dimen>
+    <!--<dimen name="titlebar_height">?attr/actionBarSize</dimen>-->
+    <dimen name="titlebar_buttonSize">60dp</dimen>
+    <dimen name="titlebar_padding">10dp</dimen>
+</resources>
