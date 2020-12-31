@@ -7,49 +7,32 @@
         app:contentInsetStart="0dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/background_dark"
+        android:background="?attr/colorPrimary"
         android:elevation="4dp"
-
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-    <!--android:background="?attr/colorPrimary"-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <!--<ImageView-->
-                <!--android:id="@+id/iv_balance"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--tools:ignore="MissingConstraints"-->
-                <!--app:layout_constraintLeft_toRightOf="@id/tv_balance"-->
-                <!--app:layout_constraintLeft_toLeftOf="parent"-->
-                <!--android:background="@android:drawable/ic_menu_manage"/>-->
-
-        <TextView
-                android:id="@+id/tv_balance_text"
+        <ImageView
+                android:id="@+id/iv_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintLeft_toRightOf="@id/tv_balance"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@android:color/white"
-                android:text="Balance" tools:ignore="MissingConstraints"/>
+                android:background="@android:drawable/ic_menu_manage"/>
 
         <TextView
                 android:id="@+id/tv_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:layout_constraintLeft_toRightOf="@id/tv_balance_text"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="@android:color/white"
+                app:layout_constraintLeft_toRightOf="@id/iv_balance"
+                android:textSize="25dp"
                 android:text="12,000,000" tools:ignore="MissingConstraints"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

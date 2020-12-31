@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-            android:id="@+id/action_advertise"
-            android:icon="@android:drawable/ic_menu_edit"
-            app:showAsAction="always" android:title="Test"/>
+    <!--<item-->
+            <!--android:id="@+id/action_advertise"-->
+            <!--android:icon="@android:drawable/ic_menu_edit"-->
+            <!--app:showAsAction="always" android:title="Test"/>-->
 
     <item
             android:id="@+id/action_menu"
-            android:icon="@android:drawable/ic_menu_help"
+            android:icon="@drawable/menu_navigation"
             app:showAsAction="always" android:title="Test"/>
 
 </menu>
