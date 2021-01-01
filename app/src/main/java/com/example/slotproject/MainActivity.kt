@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.custom_actionbar.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var reelContainer: ReelContainer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,21 +25,18 @@ class MainActivity : AppCompatActivity() {
 
         setSpinText(!GameConfig.isAuto)
 
-        val reelContainer = ReelContainer(this, ll_reel_container)
-
+        reelContainer = ReelContainer(this, ll_reel_container)
 
         btn_spin.setOnClickListener {
             if (GameConfig.gameStatus === GameStatus.READY) {
                 GameConfig.gameStatus = GameStatus.SPINNING
                 reelContainer.startSpin()
-            } else {
-                reelContainer.stopSpin()
-                GameConfig.gameStatus = GameStatus.READY
             }
         }
 
         btn_spin.setOnLongClickListener {
             setSpinText(!GameConfig.isAuto)
+            btn_spin.callOnClick()
             true
         }
     }

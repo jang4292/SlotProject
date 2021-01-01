@@ -1,19 +1,24 @@
 package com.example.slotproject
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 
 class Reel(context: Context, index: Int) : FrameLayout(context) {
-
     private val ll: LinearLayout
     private val spinningReel: FrameLayout
-    private val symbolCount: Int = 10 + index * 10
+    private val symbolCount: Int = GameConfig.DEFAULT_SYMBOL_COUNT + GameConfig.ADD_SYMBOL_COUNT * index
     private val imageViews: Array<ImageView?> = arrayOfNulls(GameConfig.ROW)
-    private val startSymbolResIds: Array<Int?> = arrayOfNulls(GameConfig.ROW)
+    private lateinit var animationEnd: () -> Unit
+
+    val startSymbolResIds: Array<Int?> = arrayOfNulls(GameConfig.ROW)
 
     init {
         val flLayoutParams =
@@ -50,12 +55,12 @@ class Reel(context: Context, index: Int) : FrameLayout(context) {
             iv.viewTreeObserver.addOnGlobalLayoutListener(
                 object : ViewTreeObserver.OnGlobalLayoutListener {
                     override fun onGlobalLayout() {
+                        iv.viewTreeObserver.removeOnGlobalLayoutListener(this)
                         if (GameConfig.SYMBOL_WIDTH > 0 && GameConfig.SYMBOL_HEIGHT > 0) {
                             return
                         }
                         GameConfig.SYMBOL_WIDTH = iv.width
                         GameConfig.SYMBOL_HEIGHT = iv.height
-                        iv.viewTreeObserver.removeOnGlobalLayoutListener(this)
                     }
                 }
             )
@@ -74,7 +79,21 @@ class Reel(context: Context, index: Int) : FrameLayout(context) {
         createFakeReel()
         ll.visibility = View.GONE
         spinningReel.visibility = View.VISIBLE
-        spinningReel.animate().translationY(0f).setDuration((symbolCount * 2000L * 0.1f).toLong()).start()
+        ObjectAnimator.ofFloat(spinningReel, "translationY", 0f).apply {
+            duration = (symbolCount * GameConfig.DURATION_SPIN_TIME * 0.1f).toLong()
+            interpolator = AccelerateDecelerateInterpolator()
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    setStartSymbols(startSymbolResIds)
+                    spinningReel.visibility = View.GONE
+                    ll.visibility = View.VISIBLE
+
+                    spinningReel.removeAllViews()
+                    animationEnd()
+                }
+            })
+            start()
+        }
     }
 
     private fun createFakeReel() {
@@ -96,17 +115,18 @@ class Reel(context: Context, index: Int) : FrameLayout(context) {
             val iv = ImageView(context)
             val ivLayoutParams = LayoutParams(LayoutParams.MATCH_PARENT, GameConfig.SYMBOL_HEIGHT)
             iv.layoutParams = ivLayoutParams
-            iv.setBackgroundResource(GameConfig.resSymbols.random())
+            val name = GameConfig.resSymbols.random()
+            iv.setBackgroundResource(name)
             iv.y = (GameConfig.SYMBOL_HEIGHT * i).toFloat()
             spinningReel.addView(iv)
+
+            if (i < GameConfig.ROW) {
+                startSymbolResIds[i] = name
+            }
         }
     }
 
-    fun stopSpin() {
-        spinningReel.animate().cancel()
-        spinningReel.y = 0f
-
-        spinningReel.visibility = View.GONE
-        ll.visibility = View.VISIBLE
+    fun setOnAnimationEnd(function: () -> Unit) {
+        animationEnd = function
     }
 }
