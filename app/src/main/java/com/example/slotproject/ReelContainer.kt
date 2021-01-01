@@ -18,7 +18,7 @@ class ReelContainer(context: Context, reelContainer: LinearLayout) {
         }
     }
 
-    fun <T> List<T>.random(): T {
+    private fun <T> List<T>.random(): T {
         val random = Random().nextInt((size))
         return get(random)
     }

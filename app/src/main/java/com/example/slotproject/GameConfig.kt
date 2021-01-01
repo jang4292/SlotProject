@@ -5,6 +5,9 @@ class GameConfig {
         const val COLUMN = 5
         const val ROW = 3
 
+        var SYMBOL_WIDTH:Int = -1
+        var SYMBOL_HEIGHT:Int = -1
+
         var isAuto = true
         var gameStatus = GameStatus.READY
 
