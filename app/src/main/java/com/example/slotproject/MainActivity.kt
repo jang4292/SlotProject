@@ -6,7 +6,6 @@ import android.view.MenuInflater
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main11.btn_spin
 import kotlinx.android.synthetic.main.custom_actionbar.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,21 +21,17 @@ class MainActivity : AppCompatActivity() {
 
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        val reels = arrayOf(fl_reel0, fl_reel1, fl_reel2, fl_reel3, fl_reel4)
         setSpinText(!GameConfig.isAuto)
-        btn_spin.setOnClickListener {
-            reels.forEach {
-                if (GameConfig.gameStatus === GameStatus.READY) {
-                    it.animate().translationY(fl_reel0.height.toFloat()).setDuration(2000L).start()
-                } else {
-                    it.animate().cancel()
-                    it.y = 0f
-                }
-            }
 
+        val reelContainer = ReelContainer(this, ll_reel_container)
+
+
+        btn_spin.setOnClickListener {
             if (GameConfig.gameStatus === GameStatus.READY) {
                 GameConfig.gameStatus = GameStatus.SPINNING
+                reelContainer.startSpin()
             } else {
+                reelContainer.stopSpin()
                 GameConfig.gameStatus = GameStatus.READY
             }
         }
@@ -45,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             setSpinText(!GameConfig.isAuto)
             true
         }
-
     }
 
     private fun setSpinText(isAuto: Boolean) {
