@@ -5,6 +5,7 @@ import android.widget.LinearLayout
 
 class ReelContainer(context: Context, reelContainer: LinearLayout) {
 
+    private lateinit var onStartSpinListener: () -> Unit
     private val reels: Array<Reel?> = arrayOfNulls(GameConfig.COLUMN)
     private var spinCount = 0
 
@@ -36,7 +37,12 @@ class ReelContainer(context: Context, reelContainer: LinearLayout) {
         return array
     }
 
+    fun setOnStartSpinListener(function: () -> Unit) {
+        onStartSpinListener = function
+    }
+
     fun startSpin() {
+        onStartSpinListener()
         reels.forEach {
             spinCount++
             it?.startSpin()

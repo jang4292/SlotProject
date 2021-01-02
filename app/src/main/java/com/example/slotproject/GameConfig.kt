@@ -9,6 +9,11 @@ class GameConfig {
         const val ADD_SYMBOL_COUNT = 10
         const val DURATION_SPIN_TIME = 2000L
 
+        val TOTAL_BET_LIST = listOf(1000, 5000, 10000, 30000, 50000, 100000)
+
+        var balance = 121560000
+        var totalBet = TOTAL_BET_LIST[0]
+
         var SYMBOL_WIDTH: Int = -1
         var SYMBOL_HEIGHT: Int = -1
 

@@ -82,6 +82,7 @@
                             android:background="@drawable/top_balance_coin"/>
 
                     <TextView
+                            android:id="@+id/tv_balance"
                             android:layout_marginLeft="5dp"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
