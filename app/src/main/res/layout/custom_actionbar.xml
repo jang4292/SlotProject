@@ -7,84 +7,124 @@
         app:contentInsetStart="0dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/background_dark"
-        android:elevation="4dp"
-
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-    <!--android:background="?attr/colorPrimary"-->
-
+        android:background="@drawable/bg_actionbar">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <!--<ImageView-->
-                <!--android:id="@+id/iv_balance"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--tools:ignore="MissingConstraints"-->
-                <!--app:layout_constraintLeft_toRightOf="@id/tv_balance"-->
-                <!--app:layout_constraintLeft_toLeftOf="parent"-->
-                <!--android:background="@android:drawable/ic_menu_manage"/>-->
-
-        <TextView
-                android:id="@+id/tv_balance_text"
+        <androidx.constraintlayout.widget.Guideline
+                app:layout_constraintGuide_percent="0.9"
+                android:id="@+id/gl_center"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:textColor="@android:color/white"
-                android:text="Balance" tools:ignore="MissingConstraints"/>
+                android:layout_height="wrap_content"/>
 
-        <TextView
-                android:id="@+id/tv_balance"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                app:layout_constraintLeft_toRightOf="@id/tv_balance_text"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="@android:color/white"
-                android:text="12,000,000" tools:ignore="MissingConstraints"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/gl_center"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintLeft_toLeftOf="parent">
 
+            <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:paddingVertical="2dp"
+                    android:background="@drawable/top_balance_bg_big">
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/top_balance_bg"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="3dp"
+                        android:layout_marginLeft="30dp">
+                    <androidx.constraintlayout.widget.Guideline
+                            app:layout_constraintGuide_percent="0.1"
+                            android:id="@+id/gl_balance_coin"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/gl_balance_coin"
+                            android:background="@drawable/top_balance_coin"/>
+
+                    <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/gl_balance_coin"
+                            android:textColor="@color/color_font_balance"
+                            android:gravity="center_vertical"
+                            android:text="121,560,000"
+                            android:textSize="24dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/gl_center"
+                app:layout_constraintRight_toRightOf="parent">
+
+            <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/menu_bg_icon"/>
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="6dp"
+                        android:background="@drawable/menu_bg_smal_icon"/>
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="9dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/menu_bg_black"/>
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="18dp"
+                        android:background="@drawable/menu_icon"/>
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText_search"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:ems="10"-->
-    <!--android:inputType="textPersonName"-->
-    <!--android:hint="검색어 입력하세요."-->
-    <!--android:visibility="gone"-->
-    <!--tools:layout_editor_absoluteX="37dp"-->
-    <!--tools:layout_editor_absoluteY="0dp"/>-->
-
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:id="@+id/toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:background="@android:color/white"-->
-    <!--android:minHeight="?attr/actionBarSize"-->
-    <!--app:contentInsetLeft="0dp"-->
-    <!--app:contentInsetStart="0dp" app:contentInsetRight="0dp"-->
-    <!--app:contentInsetEnd="0dp">-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/toolbar_title"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:gravity="center"-->
-    <!--android:text="TEST"-->
-    <!--android:textColor="@android:color/black"-->
-    <!--android:textSize="25dp"-->
-    <!--android:textStyle="bold"/>-->
-
 </androidx.appcompat.widget.Toolbar>

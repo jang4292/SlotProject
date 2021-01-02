@@ -1,8 +1,6 @@
 package com.example.slotproject
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,11 +42,5 @@ class MainActivity : AppCompatActivity() {
     private fun setSpinText(isAuto: Boolean) {
         GameConfig.isAuto = isAuto
         btn_spin.setImageResource(if (isAuto) R.drawable.button_stop else R.drawable.button_spin)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu_actionbar, menu)
-        return true
     }
 }
