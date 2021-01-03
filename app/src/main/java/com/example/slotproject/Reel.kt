@@ -16,7 +16,7 @@ class Reel(context: Context, index: Int) : FrameLayout(context) {
     private val spinningReel: FrameLayout
     private val symbolCount: Int = GameConfig.DEFAULT_SYMBOL_COUNT + GameConfig.ADD_SYMBOL_COUNT * index
     private val imageViews: Array<ImageView?> = arrayOfNulls(GameConfig.ROW)
-    private lateinit var animationEnd: () -> Unit
+    private lateinit var animationEnd: (Reel) -> Unit
 
     val startSymbolResIds: Array<Int?> = arrayOfNulls(GameConfig.ROW)
 
@@ -89,7 +89,7 @@ class Reel(context: Context, index: Int) : FrameLayout(context) {
                     ll.visibility = View.VISIBLE
 
                     spinningReel.removeAllViews()
-                    animationEnd()
+                    animationEnd(this@Reel)
                 }
             })
             start()
@@ -126,7 +126,7 @@ class Reel(context: Context, index: Int) : FrameLayout(context) {
         }
     }
 
-    fun setOnAnimationEnd(function: () -> Unit) {
+    fun setOnAnimationEnd(function: (Reel) -> Unit) {
         animationEnd = function
     }
 }

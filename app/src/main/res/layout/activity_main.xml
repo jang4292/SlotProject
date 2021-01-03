@@ -7,6 +7,27 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity11">
 
+    <androidx.constraintlayout.widget.Guideline
+            app:layout_constraintGuide_percent="0.35"
+            android:id="@+id/gl_win_left"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            app:layout_constraintGuide_percent="0.65"
+            android:id="@+id/gl_win_right"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            app:layout_constraintGuide_percent="0.8"
+            android:id="@+id/gl_win_top"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     <include
             layout="@layout/custom_actionbar"/>
 
@@ -187,4 +208,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+            android:id="@+id/fl_win_balance"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/gl_win_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/gl_win_left"
+            app:layout_constraintRight_toRightOf="@id/gl_win_right"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_win_balance">
+
+        <TextView
+                android:id="@+id/tv_win_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="10000"
+                android:textSize="25dp"
+                android:textColor="@android:color/white"/>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
