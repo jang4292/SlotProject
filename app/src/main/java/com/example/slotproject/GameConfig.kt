@@ -2,6 +2,10 @@ package com.example.slotproject
 
 class GameConfig {
     companion object {
+        const val KEY_DEFAULT_BALANCE = "KEY_DEFAULT_BALANCE"
+        const val KEY_BALANCE = "KEY_BALANCE"
+
+        const val DEFAULT_BALANCE = 100000
         const val COLUMN = 5
         const val ROW = 3
 
@@ -11,7 +15,7 @@ class GameConfig {
 
         val TOTAL_BET_LIST = listOf(1000, 5000, 10000, 30000, 50000, 100000)
 
-        var balance = 121560000
+        var balance = 0
         var totalBet = TOTAL_BET_LIST[0]
 
         var SYMBOL_WIDTH: Int = -1

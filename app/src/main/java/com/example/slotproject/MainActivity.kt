@@ -1,9 +1,9 @@
 package com.example.slotproject
 
+import android.content.Context
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,12 +25,26 @@ class MainActivity : AppCompatActivity() {
 
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+        val sharedPreferences =
+            getSharedPreferences(GameConfig.KEY_DEFAULT_BALANCE, Context.MODE_PRIVATE)
+
+        GameConfig.balance = sharedPreferences.getInt(GameConfig.KEY_BALANCE, -1)
+        if (GameConfig.balance < 0) {
+            GameConfig.balance = GameConfig.DEFAULT_BALANCE
+        }
+        tv_balance.text = GameConfig.balance.toString()
         setSpinText(!GameConfig.isAuto)
 
         tv_bet_value.text = GameConfig.totalBet.toString()
-        reelContainer = ReelContainer(this, ll_reel_container)
+        reelContainer = ReelContainer(this, ll_reel_container, tv_balance)
         reelContainer.setOnStartSpinListener {
             GameConfig.balance -= GameConfig.totalBet
+            val sharedPreferences =
+                getSharedPreferences(GameConfig.KEY_DEFAULT_BALANCE, Context.MODE_PRIVATE)    // test 이름의 기본모드 설정
+            val editor = sharedPreferences.edit() //sharedPreferences를 제어할 editor를 선언
+            editor.putInt(GameConfig.KEY_BALANCE, GameConfig.balance) // key,value 형식으로 저장
+            editor.commit()    //최종 커밋. 커밋을 해야 저장이 된다.
+
             tv_balance.text = GameConfig.balance.toString()
         }
         betController = BetController(this, ll_bet_list)
@@ -65,7 +79,6 @@ class MainActivity : AppCompatActivity() {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         return when (MotionEventCompat.getActionMasked(event)) {
             MotionEvent.ACTION_DOWN -> {
-                Toast.makeText(applicationContext, "Action was DOWN", Toast.LENGTH_SHORT).show()
                 betController.hide()
                 true
             }
