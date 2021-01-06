@@ -24,15 +24,6 @@ class ReelContainer(private val context: Context, reelContainer: LinearLayout, o
                     if (rand < 50) {
                         onUpdateWinAnimation()
                     }
-
-//                    if (GameConfig.isAuto) {
-//                        GameConfig.gameStatus = GameStatus.SPINNING
-////                        startSpin()
-//                    } else {
-//                        GameConfig.gameStatus = GameStatus.READY
-//                    }
-
-//                    onComplete()
                     onCompleteSpinListener()
                 }
             })
