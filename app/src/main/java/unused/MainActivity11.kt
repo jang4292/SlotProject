@@ -1,4 +1,4 @@
-package com.example.slotproject
+package unused
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,6 +6,9 @@ import android.view.MenuInflater
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.slotproject.GameConfig
+import com.example.slotproject.GameStatus
+import com.example.slotproject.R
 import kotlinx.android.synthetic.main.activity_main11.*
 import kotlinx.android.synthetic.main.custom_actionbar.*
 

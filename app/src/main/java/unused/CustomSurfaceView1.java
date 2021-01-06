@@ -1,4 +1,4 @@
-package com.example.slotproject;
+package unused;
 
 import android.content.Context;
 import android.graphics.*;
@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import com.example.slotproject.R;
 
 public class CustomSurfaceView1 extends SurfaceView implements SurfaceHolder.Callback {
 

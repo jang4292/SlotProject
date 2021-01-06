@@ -1,10 +1,13 @@
-package com.example.slotproject
+package unused
 
 import android.content.Context
 import android.graphics.*
 import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import com.example.slotproject.GameConfig
+import com.example.slotproject.GameStatus
+import com.example.slotproject.R
 
 class CustomSurfaceView2(private val context: Context, private val surfaceView: SurfaceView) : SurfaceHolder.Callback {
 
