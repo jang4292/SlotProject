@@ -18,12 +18,14 @@ class CustomActionBar(val context: Context, private val tvBalance: TextView, bal
     fun updateBalance(balance: Int) {
         val prevBalance = currentBalance
         currentBalance = balance
-        val animator = ValueAnimator.ofInt(prevBalance, currentBalance) //0 is min number, 600 is max number
-        animator.duration = 1500//Duration is in milliseconds
-        animator.addUpdateListener { animation -> tvBalance.text = animation.animatedValue.toString() }
-        animator.start()
-
-        editor.putInt(GameConfig.KEY_BALANCE, GameConfig.balance) // key,value 형식으로 저장
-        editor.commit()    //최종 커밋. 커밋을 해야 저장이 된다.
+        with(ValueAnimator.ofInt(prevBalance, currentBalance)) {
+            duration = 1500//Duration is in milliseconds
+            addUpdateListener { animation -> tvBalance.text = animation.animatedValue.toString() }
+            start()
+        }
+        with(editor) {
+            putInt(GameConfig.KEY_BALANCE, GameConfig.balance) // key,value 형식으로 저장
+            commit()    //최종 커밋. 커밋을 해야 저장이 된다.
+        }
     }
 }
