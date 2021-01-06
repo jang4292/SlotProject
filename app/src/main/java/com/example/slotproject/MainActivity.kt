@@ -2,7 +2,6 @@ package com.example.slotproject
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -34,20 +33,16 @@ class MainActivity : AppCompatActivity() {
         if (GameConfig.balance < 0) {
             GameConfig.balance = GameConfig.DEFAULT_BALANCE
         }
-        tv_balance.text = GameConfig.balance.toString()
+        
+        val customActionbar = CustomActionBar(this, tv_balance, GameConfig.balance)
         setSpinText(!GameConfig.isAuto)
 
         tv_bet_value.text = GameConfig.totalBet.toString()
         reelContainer = ReelContainer(this, ll_reel_container) {
             val winBalance = GameConfig.totalBet * 2
             GameConfig.balance += winBalance
-            val sharedPreferences =
-                getSharedPreferences(GameConfig.KEY_DEFAULT_BALANCE, Context.MODE_PRIVATE)    // test 이름의 기본모드 설정
-            val editor = sharedPreferences.edit() //sharedPreferences를 제어할 editor를 선언
-            editor.putInt(GameConfig.KEY_BALANCE, GameConfig.balance) // key,value 형식으로 저장
-            editor.commit()    //최종 커밋. 커밋을 해야 저장이 된다.
             tv_win_balance.text = winBalance.toString()
-            tv_balance.text = GameConfig.balance.toString()
+            customActionbar.updateBalance(GameConfig.balance)
             fl_win_balance.visibility = View.VISIBLE
         }
 
@@ -59,13 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
         reelContainer.setOnStartSpinListener {
             GameConfig.balance -= GameConfig.totalBet
-            val sharedPreferences =
-                getSharedPreferences(GameConfig.KEY_DEFAULT_BALANCE, Context.MODE_PRIVATE)    // test 이름의 기본모드 설정
-            val editor = sharedPreferences.edit() //sharedPreferences를 제어할 editor를 선언
-            editor.putInt(GameConfig.KEY_BALANCE, GameConfig.balance) // key,value 형식으로 저장
-            editor.commit()    //최종 커밋. 커밋을 해야 저장이 된다.
-
-            tv_balance.text = GameConfig.balance.toString()
+            customActionbar.updateBalance(GameConfig.balance)
         }
         betController = BetController(this, ll_bet_list)
         betController.setOnClickButton {
