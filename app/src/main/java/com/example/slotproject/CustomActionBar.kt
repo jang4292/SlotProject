@@ -2,10 +2,13 @@ package com.example.slotproject
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import kotlinx.android.synthetic.main.custom_actionbar.view.*
 
 
-class CustomActionBar(val context: Context, private val tvBalance: TextView, balance: Int) {
+class CustomActionBar(val context: Context, val toolBar: Toolbar, balance: Int) {
+
+    private val tvBalance = toolBar.tv_balance
     private var currentBalance = balance
     private val sharedPreferences =
         context.getSharedPreferences(GameConfig.KEY_DEFAULT_BALANCE, Context.MODE_PRIVATE)    // test 이름의 기본모드 설정
@@ -26,6 +29,12 @@ class CustomActionBar(val context: Context, private val tvBalance: TextView, bal
         with(editor) {
             putInt(GameConfig.KEY_BALANCE, GameConfig.balance) // key,value 형식으로 저장
             commit()    //최종 커밋. 커밋을 해야 저장이 된다.
+        }
+    }
+
+    fun setOnClickMenuListener(function: () -> Unit) {
+        toolBar.cl_menu_btn.setOnClickListener {
+            function()
         }
     }
 }

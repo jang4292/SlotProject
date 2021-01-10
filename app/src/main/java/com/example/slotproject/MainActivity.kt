@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,8 +34,12 @@ class MainActivity : AppCompatActivity() {
         if (GameConfig.balance < 0) {
             GameConfig.balance = GameConfig.DEFAULT_BALANCE
         }
-        
-        val customActionbar = CustomActionBar(this, tv_balance, GameConfig.balance)
+
+        val settingPopupDialog = SettingPopupDialog(this)
+        val customActionbar = CustomActionBar(this, my_toolbar, GameConfig.balance)
+        customActionbar.setOnClickMenuListener {
+            settingPopupDialog.show()
+        }
         setSpinText(!GameConfig.isAuto)
 
         tv_bet_value.text = GameConfig.totalBet.toString()
